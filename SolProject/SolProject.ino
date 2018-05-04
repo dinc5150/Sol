@@ -1,7 +1,3 @@
-
-
-
-
 #include "ChannelPwm_Base.h"
 #include "MqttObj.h"
 #include "GlobalConst.h"
@@ -202,5 +198,5 @@ void loop() {
 	//pwm.setPWM(7, 2000, 0);
 	//delay(10);
 	//Serial.println("loop");
-	delay(10);
+	//delay(10);
 }

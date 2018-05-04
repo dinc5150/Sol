@@ -19,8 +19,8 @@ OneButton::OneButton(int pin, int activeLow, Trigger *MasterTrigger)
 
 	_masterTrigger = MasterTrigger; // This is the master button that we can fire events off to
 
-	_clickTicks = 500;        // number of millisec that have to pass by before a click is detected.
-	_pressTicks = 600;       // number of millisec that have to pass by before a long button press is detected.
+	_clickTicks = 300;        // number of millisec that have to pass by before a click is detected.
+	_pressTicks = 900;       // number of millisec that have to pass by before a long button press is detected.
 
 	_state = 0; // starting with state 0: waiting for button to be pressed
 	_isLongPressed = false;  // Keep track of long press state
