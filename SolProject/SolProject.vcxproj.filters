@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Libs">
+      <UniqueIdentifier>{1427f221-fd97-4399-8f68-eb73188f1ee2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Libs">
+      <UniqueIdentifier>{ebba287d-2b59-459c-b42f-22fa2e588a47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Triggers">
+      <UniqueIdentifier>{bfb55b8e-7ef8-4cab-a665-29b7d9e8749f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Triggers">
+      <UniqueIdentifier>{dc255589-b808-4060-90c2-3ab891d67b0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Channels">
+      <UniqueIdentifier>{ded3f49b-3912-4fa0-8648-387c99438071}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Channels">
+      <UniqueIdentifier>{7284e670-a213-4c09-860e-cdc7e2614c67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{65132f10-cd8a-43ab-a9d2-f1208a6f6e69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{a8339c77-ca0c-4baa-a0f7-cd8afe6796bb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="settings.ini" />
+    <None Include="SolProject.ino" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="__vm\.SolProject.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MemoryFree.h">
+      <Filter>Header Files\Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="Trigger.h">
+      <Filter>Header Files\Triggers</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggerBtn.h">
+      <Filter>Header Files\Triggers</Filter>
+    </ClInclude>
+    <ClInclude Include="ChannelLight.h">
+      <Filter>Header Files\Channels</Filter>
+    </ClInclude>
+    <ClInclude Include="Channel.h">
+      <Filter>Header Files\Channels</Filter>
+    </ClInclude>
+    <ClInclude Include="OneButton.h">
+      <Filter>Header Files\Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalConst.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MqttCmd.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="External Libs\pubsubclient-master\src\PubSubClient.h">
+      <Filter>Header Files\Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="MqttObj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ChannelPwm_Base.h">
+      <Filter>Header Files\Channels</Filter>
+    </ClInclude>
+    <ClInclude Include="ChannelPwmLightDimmable.h">
+      <Filter>Header Files\Channels</Filter>
+    </ClInclude>
+    <ClInclude Include="External Libs\Adafruit-PWM-Servo-Driver-Library-master\Adafruit_PWMServoDriver.h">
+      <Filter>Header Files\Libs</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MemoryFree.cpp">
+      <Filter>Source Files\Libs</Filter>
+    </ClCompile>
+    <ClCompile Include="TriggerBtn.cpp">
+      <Filter>Source Files\Triggers</Filter>
+    </ClCompile>
+    <ClCompile Include="Trigger.cpp">
+      <Filter>Source Files\Triggers</Filter>
+    </ClCompile>
+    <ClCompile Include="OneButton.cpp">
+      <Filter>Source Files\Libs</Filter>
+    </ClCompile>
+    <ClCompile Include="Channel.cpp">
+      <Filter>Source Files\Channels</Filter>
+    </ClCompile>
+    <ClCompile Include="ChannelLight.cpp">
+      <Filter>Source Files\Channels</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalConst.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MqttCmd.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="External Libs\pubsubclient-master\src\PubSubClient.cpp">
+      <Filter>Source Files\Libs</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="MqttObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChannelPwm_Base.cpp">
+      <Filter>Source Files\Channels</Filter>
+    </ClCompile>
+    <ClCompile Include="ChannelPwmLightDimmable.cpp">
+      <Filter>Source Files\Channels</Filter>
+    </ClCompile>
+    <ClCompile Include="External Libs\Adafruit-PWM-Servo-Driver-Library-master\Adafruit_PWMServoDriver.cpp">
+      <Filter>Source Files\Libs</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SolProject.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
