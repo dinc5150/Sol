@@ -14,12 +14,13 @@ ChannelPwm_Base::ChannelPwm_Base(byte _pin, Log * _logger, char id[], Adafruit_P
 
 void ChannelPwm_Base::On() {
 	currentValue = maxValue;
-	pwm->setPWM(pin, 0, maxValue);
+	//pwm->setPWM(pin, 0, maxValue);
+	pwm->setPWM(pin, maxValue+1, 0); //On - pwm.setPWM(pin, 4096, 0);
 	//logger->WriteLn("On", ID);
 }
 void ChannelPwm_Base::Off() {
 	currentValue = minValue;
-	pwm->setPWM(pin, 0, minValue);
+	pwm->setPWM(pin, 0, maxValue + 1); //Off - pwm.setPWM(pin, 0, 4096);
 	//logger->WriteLn("Off", ID);
 }
 

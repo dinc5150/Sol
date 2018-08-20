@@ -154,7 +154,8 @@ void setup() {
 	//}
 
 	pwm.begin();
-	pwm.setPWMFreq(1600);
+	pwm.setPWMFreq(40); //A number representing the frequency in Hz, between 40 and 1000
+
 	//pwm.reset(); //resets all pins to 0
 
 	//channels[0] = new ChannelLight(6);
@@ -198,5 +199,5 @@ void loop() {
 	//pwm.setPWM(7, 2000, 0);
 	//delay(10);
 	//Serial.println("loop");
-	//delay(10);
+	delay(10);
 }
