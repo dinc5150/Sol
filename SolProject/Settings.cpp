@@ -48,7 +48,7 @@ void SettingsClass::init(Channel * channels[], Trigger * triggers[], byte &Total
 						logger->Write(lineSection - 2);
 						logger->Write(": ");
 						logger->WriteLn(sOptions[lineSection - 2]);
-
+						Serial.println(sType);
 
 						//Finished reading line
 						if (sType == "debug") {
@@ -114,6 +114,10 @@ void SettingsClass::init(Channel * channels[], Trigger * triggers[], byte &Total
 							MAC[4] = sOptions[4].toInt();
 							MAC[5] = sOptions[5].toInt();
 						}
+						else {
+							Serial.print("UnknownType: ");
+							Serial.println(sType);
+						}
 
 						lineSection = 0;
 					} else if (character == ',') {
@@ -149,9 +153,14 @@ void SettingsClass::init(Channel * channels[], Trigger * triggers[], byte &Total
 		channels[0] = new ChannelLight(13, logger, "TEMP");
 		MqttCmdHelper->AddMqttObject(channels[0]);
 		Total_Channels++;
-		triggers[0] = new TriggerBtn(0,6, "THISNEEDSTOBEUNIQUE", MqttCmdHelper, logger);
+		triggers[0] = new TriggerBtn(0,8, "THISNEEDSTOBEUNIQUE", MqttCmdHelper, logger);
 		Total_Triggers++;
 		triggers[0]->AddChannel(channels[0]);
+
+		channels[2] = new ChannelLight(12, logger, "TEMP");
+		MqttCmdHelper->AddMqttObject(channels[2]);
+		Total_Channels++;
+		triggers[0]->AddFeedbackChannel(channels[2]);
 
 
 		

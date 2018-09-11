@@ -154,7 +154,7 @@ void setup() {
 	//}
 
 	pwm.begin();
-	pwm.setPWMFreq(40); //A number representing the frequency in Hz, between 40 and 1000
+	pwm.setPWMFreq(240); //A number representing the frequency in Hz, between 40 and 1000. Fluresent lights are at 120hz
 
 	//pwm.reset(); //resets all pins to 0
 

@@ -49,7 +49,7 @@ void TriggerBtn::onDblClick() {
 		logger->WriteLn((String)"Double Click");
 	}
 
-	logger->WriteLn("freeMemory", freeMemory());
+	//logger->WriteLn("freeMemory", freeMemory());
 }
 
 void TriggerBtn::onLongPressStart() {
