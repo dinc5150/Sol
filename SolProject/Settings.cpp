@@ -22,7 +22,7 @@ void SettingsClass::init(Channel * channels[], Trigger * triggers[], byte &Total
 		// read from the file until there's nothing else in it:
 		while (myFile.available()) {
 			character = myFile.read();
-
+			//Serial.print(character);
 			if (character == ' ') {
 				//Skip Spaces
 			} else if (character == '/') {
@@ -44,11 +44,11 @@ void SettingsClass::init(Channel * channels[], Trigger * triggers[], byte &Total
 				} else if (lineSection > 1) {
 
 					if (character == ']') {
-						logger->Write("Option ");
-						logger->Write(lineSection - 2);
-						logger->Write(": ");
-						logger->WriteLn(sOptions[lineSection - 2]);
-						Serial.println(sType);
+						Serial.print("Option ");
+						Serial.print(lineSection - 2);
+						Serial.print(": ");
+						Serial.println(sOptions[lineSection - 2]);
+						//Serial.println(sType);
 
 						//Finished reading line
 						if (sType == "debug") {
@@ -127,7 +127,12 @@ void SettingsClass::init(Channel * channels[], Trigger * triggers[], byte &Total
 						logger->WriteLn(sOptions[lineSection - 2]);
 						lineSection++;
 					} else {
-						sOptions[lineSection - 2] = sOptions[lineSection - 2] + character;
+						Serial.println();
+						Serial.print(sOptions[lineSection - 2]);
+						Serial.write(character);
+						Serial.println();
+						sOptions[lineSection - 2].concat(character);
+						//sOptions[lineSection - 2] = sOptions[lineSection - 2] + character;
 					}
 
 
@@ -146,11 +151,11 @@ void SettingsClass::init(Channel * channels[], Trigger * triggers[], byte &Total
 		logger->WriteLn("Failed");
 
 		logger->WriteLn("Could not open settings.ini. Loading Defaults");
-		logger->WriteLn("Light pin 13 and button pin 6");
+		//logger->WriteLn("Light pin 13 and button pin 6");
 
 
 
-		channels[0] = new ChannelLight(13, logger, "TEMP");
+		/*channels[0] = new ChannelLight(13, logger, "TEMP");
 		MqttCmdHelper->AddMqttObject(channels[0]);
 		Total_Channels++;
 		triggers[0] = new TriggerBtn(0,8, "THISNEEDSTOBEUNIQUE", MqttCmdHelper, logger);
@@ -169,9 +174,145 @@ void SettingsClass::init(Channel * channels[], Trigger * triggers[], byte &Total
 		Total_Channels++;
 		triggers[1] = new TriggerBtn(1, 7, "THISNEEDSTOBEUNIQUE2", MqttCmdHelper, logger);
 		Total_Triggers++;
-		triggers[1]->AddChannel(channels[1]);
+		triggers[1]->AddChannel(channels[1]);*/
 
 		
+
+		logger->logToSerial(true);
+		logger->logToFile(false);
+		IP[0] = 10;
+		IP[1] = 0;
+		IP[2] = 0;
+		IP[3] = 1;
+
+		MAC[0] = 0x01;
+		MAC[1] = 0x01;
+		MAC[2] = 0x01;
+		MAC[3] = 0x01;
+		MAC[4] = 0x01;
+		MAC[5] = 0x01;
+
+
+		//[mqttIp, 10, 0, 0, 11, 1883]
+		MQTT_SERVER_IP[0] = 10;
+		MQTT_SERVER_IP[1] = 0;
+		MQTT_SERVER_IP[2] = 0;
+		MQTT_SERVER_IP[3] = 11;
+		MQTT_SERVER_PORT = 1883;
+		MqttCmdHelper->MqttClient->setServer(IPAddress(MQTT_SERVER_IP[0], MQTT_SERVER_IP[1], MQTT_SERVER_IP[2], MQTT_SERVER_IP[3]), MQTT_SERVER_PORT);
+
+		//[pwm, 0, 0, LFront]
+		channels[0] = new ChannelPwm_Base(0, logger, "LFront", pwm);
+		MqttCmdHelper->AddMqttObject(channels[0]);
+		Total_Channels++;
+
+
+
+		//[pwm, 1, 1, LLounge]
+		channels[1] = new ChannelPwm_Base(1, logger, "LLounge", pwm);
+		MqttCmdHelper->AddMqttObject(channels[1]);
+		Total_Channels++;
+
+		//[pwm, 2, 2, LKitchen]
+		channels[2] = new ChannelPwm_Base(2, logger, "LKitchen", pwm);
+		MqttCmdHelper->AddMqttObject(channels[2]);
+		Total_Channels++;
+
+		//[pwm, 3, 3, LKitPend]
+		channels[3] = new ChannelPwm_Base(3, logger, "LKitPend", pwm);
+		MqttCmdHelper->AddMqttObject(channels[3]);
+		Total_Channels++;
+
+		//[pwm, 4, 4, LOffice]
+		channels[4] = new ChannelPwm_Base(4, logger, "LOffice", pwm);
+		MqttCmdHelper->AddMqttObject(channels[4]);
+		Total_Channels++;
+
+		//[pwm, 5, 8, BLFront]
+		channels[5] = new ChannelPwm_Base(8, logger, "BLFront", pwm);
+		MqttCmdHelper->AddMqttObject(channels[5]);
+		Total_Channels++;
+
+		//[pwm, 6, 9, BLLounge]
+		channels[6] = new ChannelPwm_Base(9, logger, "BLLounge", pwm);
+		MqttCmdHelper->AddMqttObject(channels[6]);
+		Total_Channels++;
+
+		//[pwm, 7, 10, BLKitPend]
+		channels[7] = new ChannelPwm_Base(10, logger, "BLKitPend", pwm);
+		MqttCmdHelper->AddMqttObject(channels[7]);
+		Total_Channels++;
+
+		//[pwm, 8, 11, BLKitchen]
+		channels[8] = new ChannelPwm_Base(11, logger, "BLKitchen", pwm);
+		MqttCmdHelper->AddMqttObject(channels[8]);
+		Total_Channels++;
+
+		//[pwm, 9, 12, BLOffice]
+		channels[9] = new ChannelPwm_Base(12, logger, "BLOffice", pwm);
+		MqttCmdHelper->AddMqttObject(channels[9]);
+		Total_Channels++;
+
+
+		//[btn, 0, 23]
+		triggers[0] = new TriggerBtn(0, 23, "unique0", MqttCmdHelper, logger);
+		Total_Triggers++;
+
+		//[btn, 1, 25]
+		triggers[1] = new TriggerBtn(1, 25, "unique1", MqttCmdHelper, logger);
+		Total_Triggers++;
+
+		//[btn, 2, 27]
+		triggers[2] = new TriggerBtn(2, 27, "unique2", MqttCmdHelper, logger);
+		Total_Triggers++;
+
+		//[btn, 3, 29]
+		triggers[3] = new TriggerBtn(3, 29, "unique3", MqttCmdHelper, logger);
+		Total_Triggers++;
+
+		//[btn, 4, 31]
+		triggers[4] = new TriggerBtn(4, 31, "unique4", MqttCmdHelper, logger);
+		Total_Triggers++;
+
+		//[btn, 5, 33]
+		triggers[5] = new TriggerBtn(5, 33, "unique5", MqttCmdHelper, logger);
+		Total_Triggers++;
+
+
+
+
+		//[addChannel, 0, 0]
+		triggers[0]->AddChannel(channels[0]);
+
+		//[addChannel, 1, 1]
+		triggers[1]->AddChannel(channels[1]);
+
+		//[addChannel, 2, 2]
+		triggers[2]->AddChannel(channels[2]);
+
+		//[addChannel, 3, 3]
+		triggers[3]->AddChannel(channels[3]);
+
+		//[addChannel, 4, 4]
+		triggers[4]->AddChannel(channels[4]);
+
+
+
+
+		//[addFeedback, 0, 5]
+		triggers[0]->AddFeedbackChannel(channels[5]);
+
+		//[addFeedback, 1, 6]
+		triggers[1]->AddFeedbackChannel(channels[6]);
+
+		//[addFeedback, 2, 7]
+		triggers[2]->AddFeedbackChannel(channels[7]);
+
+		//[addFeedback, 3, 8]
+		triggers[3]->AddFeedbackChannel(channels[8]);
+
+		//[addFeedback, 4, 9]
+		triggers[4]->AddFeedbackChannel(channels[9]);
 
 	}
 

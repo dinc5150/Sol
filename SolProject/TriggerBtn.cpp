@@ -28,15 +28,20 @@ void TriggerBtn::onClick() {
 			channels[i]->Off();
 		}
 	}
+	//feedbackChannels[0]->On();
+	logger->WriteLn("switching feedback", totalFeedbackChannels);
 
 	for (byte i = 0; i < totalFeedbackChannels; i++) {
+		
+		//Feed back code causes arduino ro reboot. Dont know why!
 		if (setOn) {
 			feedbackChannels[i]->Off();
 		} else {
 			feedbackChannels[i]->On();
 		}
+		
 	}
-	logger->WriteLn((String)"Click done");
+	logger->WriteLn("Click done");
 	
 	mqttCmdHelper->PublishEvent("btn", Id, "click");
 	
